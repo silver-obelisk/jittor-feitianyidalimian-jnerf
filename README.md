@@ -1,21 +1,16 @@
-| 第二届计图挑战赛开源模板
+| 第二届计图挑战赛B榜可微分渲染赛道开源
 
-# Jittor 草图生成风景比赛 baseline
-| 标题名称包含赛题、方法
-
-![主要结果](https://s3.bmp.ovh/imgs/2022/04/19/440f015864695c92.png)
-
-｜展示方法的流程特点或者主要结果等
+# Jittor 可微分渲染比赛 
 
 ## 简介
 | 简单介绍项目背景、项目特点
 
-本项目包含了第二届计图挑战赛计图 - 草图生成风景比赛的代码实现。本项目的特点是：采用了 XX 方法对 YY 处理，取得了 ZZ 的效果。
+本项目包含了第二届计图挑战赛计图 - 可微分渲染比赛的代码实现。本项目的特点是：采用了JNeRF方法对数据集进行重建
 
 ## 安装 
 | 介绍基本的硬件需求、运行环境、依赖安装方法
 
-本项目可在 2 张 2080 上运行，训练时间约为 6 小时。
+本项目可在 1张 V100 上运行，每个数据集的训练时间约为20分钟。
 
 #### 运行环境
 - ubuntu 20.04 LTS
@@ -27,44 +22,23 @@
 ```
 pip install -r requirements.txt
 ```
-
-#### 预训练模型
-预训练模型模型下载地址为 https:abc.def.gh，下载后放入目录 `<root>/weights/` 下。
-
-## 数据预处理
-| 介绍数据预处理方法，可选
-
-将数据下载解压到 `<root>/data` 下，执行以下命令对数据预处理：
-```
-bash scripts/prepross.sh
-```
+## 数据集
+｜ 介绍数据集下载的方法
+数据集可以在https://www.educoder.net/competitions/index/Jittor-3评测数据一栏中下载，请将下载好的数据集放在data文件夹内
 
 ## 训练
 ｜ 介绍模型训练的方法
 
-单卡训练可运行以下命令：
-```
-bash scripts/train.sh
-```
+运行python tools/run_net.py --config-file ./projects/ngp/configs/ngp_Coffee.py命令获取Coffee数据集的训练结果，同样将ngp_Coffee改成ngp_Easyship可以获得
+Easyship的训练结果，以此类推。训练结果保存在logs文件夹内。注意确保数据集已经放在data文件夹内，否则运行会报错
 
-多卡训练可以运行以下命令：
-```
-bash scripts/train-multigpu.sh
-```
 
-## 推理
-｜ 介绍模型推理、测试、或者评估的方法
 
-生成测试集上的结果可以运行以下命令：
-
-```
-bash scripts/test.sh
-```
 
 ## 致谢
 | 对参考的论文、开源库予以致谢，可选
 
-此项目基于论文 *A Style-Based Generator Architecture for Generative Adversarial Networks* 实现，部分代码参考了 [jittor-gan](https://github.com/Jittor/gan-jittor)。
+此项目基于JNeRF实现，代码参考了https://github.com/Jittor/JNeRF。
 
 ## 注意事项
 
